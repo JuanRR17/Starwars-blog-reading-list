@@ -38,6 +38,7 @@ const Category = ({
                         case "Characters":{
                             return <CharacterCard 
                                 key={item.uid} 
+                                id={item.uid}
                                 item={item}
                                 url={item.url}                                
                                 />

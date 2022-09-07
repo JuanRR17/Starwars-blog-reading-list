@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import {AiOutlineHeart} from 'react-icons/ai'
 import { makeRequest } from "../utils.js";
+import { useHistory } from 'react-router-dom';
 
 
 const CharacterCard = ({
     item,
+    id,
     url
 }) => {
-
+    const history = useHistory()
     const [details, setDetails]=useState()
     const style={
         "width":"400px"
@@ -21,7 +23,7 @@ const CharacterCard = ({
         }
         getCharData()
     },[])
-// console.log("details",details)
+
   return (
     <div className="card" style={style}>
         <img src="..." className="card-img-top" alt="..."/>
@@ -32,7 +34,7 @@ const CharacterCard = ({
                 <div>Hair-Color: {details ? details.hair_color : null}</div>
                 <div>Eye-Color: {details ? details.eye_color : null}</div>
             </div>
-            <button type="button" className="btn btn-outline-primary">Learn More!</button>
+            <button type="button" onClick={() => history.push(`/character/${id}`)} className="btn btn-outline-primary">Learn More!</button>
             <button type="button" className="float-end btn btn-outline-warning"><AiOutlineHeart/></button>
         </div>
     </div> 

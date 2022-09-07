@@ -21,7 +21,7 @@ const PlanetCard = ({
         }
         getPlanetData()
     },[])
-// console.log("details",details)
+    
   return (
     <div className="card" style={style}>
         <img src="..." className="card-img-top" alt="..."/>
