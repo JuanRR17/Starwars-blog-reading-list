@@ -25,7 +25,7 @@ const Category = ({
         }
         getCategoryData()
         },[])
-        console.log("categoryData",categoryData)
+        // console.log("categoryData",categoryData)
   return (
     <div >
         <h1>{category}</h1>
@@ -46,7 +46,8 @@ const Category = ({
                         }
                          case "Planets":{
                             return <PlanetCard 
-                            key={item.uid} 
+                            key={item.uid}
+                            id={item.uid} 
                             item={item}
                             url={item.url}
                             />
@@ -55,6 +56,7 @@ const Category = ({
                        case "Vehicles":{
                             return <VehicleCard 
                             key={item.uid} 
+                            id={item.uid}
                             item={item}
                             url={item.url}
                             />
