@@ -5,9 +5,7 @@ import { makeRequest } from "../utils.js";
 import { useHistory } from 'react-router-dom';
 
 const PlanetCard = ({
-    item,
-    id,
-    url
+    item
 }) => {
     const history = useHistory()
     const [details, setDetails]=useState()
@@ -17,7 +15,7 @@ const PlanetCard = ({
 
     useEffect(()=>{
         const getPlanetData = async () =>{
-            const det = await makeRequest(url)
+            const det = await makeRequest(item.url)
             setDetails(det.result.properties)
         }
         getPlanetData()
@@ -32,7 +30,7 @@ const PlanetCard = ({
                 <div>Population: {details ? details.population : null}</div>
                 <div>Terrain: {details ? details.terrain : null}</div>
             </div>
-            <button type="button" onClick={() => history.push(`/planet/${id}`)} className="btn btn-outline-primary">Learn More!</button>
+            <button type="button" onClick={() => history.push(`/planet/${item.uid}`)} className="btn btn-outline-primary">Learn More!</button>
             <button type="button" className="float-end btn btn-outline-warning"><AiOutlineHeart/></button>
         </div>
     </div> 

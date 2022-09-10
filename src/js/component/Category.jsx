@@ -10,12 +10,6 @@ const Category = ({
     id
 }) => {
     const [categoryData, setCategoryData] = useState()
-    const style1={
-        "width":"100vw"
-    }
-    const style2={
-        "width":"fit-content"
-    }
 
     useEffect(( )=>{
         const getCategoryData = async () =>{
@@ -29,8 +23,9 @@ const Category = ({
   return (
     <div >
         <h1>{category}</h1>
-        <div style={style1} className="overflow-auto">
-            <div className='d-flex' style={style2}>
+        <div 
+        className="d-flex overflow-auto">
+            <div className='d-flex flex-row flex-nowrap'>
             {
                 categoryData ?
                 categoryData.map((item)=>{
@@ -38,27 +33,21 @@ const Category = ({
                         case "Characters":{
                             return <CharacterCard 
                                 key={item.uid} 
-                                id={item.uid}
                                 item={item}
-                                url={item.url}                                
                                 />
                             break
                         }
                          case "Planets":{
                             return <PlanetCard 
                             key={item.uid}
-                            id={item.uid} 
                             item={item}
-                            url={item.url}
                             />
                             break
                         }
                        case "Vehicles":{
                             return <VehicleCard 
                             key={item.uid} 
-                            id={item.uid}
                             item={item}
-                            url={item.url}
                             />
                             break
                         }
