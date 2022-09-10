@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import {AiOutlineHeart} from 'react-icons/ai'
 import { makeRequest } from "../utils.js";
 import { useHistory } from 'react-router-dom';
-import favoritesContext from "../favorites-context"
+import favouritesContext from "../favourites-context"
 
 const CharacterCard = ({
     item
 }) => {
-    // const favs = useContext(favoritesContext)
-    const {store,actions}=useContext(favoritesContext)
-    console.log("storeInCard:",store)
+    // const favs = useContext(favouritesContext)
+    const {actions}=useContext(favouritesContext)
+
     const history = useHistory()
     const [details, setDetails]=useState()
     const link = `/character/${item.uid}`

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Favorites from "./Favorites.jsx";
+import Favourites from "./Favourites.jsx";
 
 export const Navbar = () => {
 
@@ -10,7 +10,7 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1">Star Wars</span>
 			</Link>
 	
-			<Favorites/>
+			<Favourites/>
 		</nav>
 	);
 };

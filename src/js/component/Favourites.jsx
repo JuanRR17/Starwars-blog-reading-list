@@ -1,20 +1,18 @@
 import React, { useContext } from "react"
-import favoritesContext from "../favorites-context"
+import favouritesContext from "../favourites-context"
 import { Link } from "react-router-dom"
 
-const Favorites = () =>{
-    // const favs = useContext(favoritesContext)
-    const {store, actions}=useContext(favoritesContext)
-
+const Favourites = () =>{
+    const {favourites, actions}=useContext(favouritesContext)
 
     return(
         <div className="dropdown">
             <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Favorites <span className="badge bg-secondary">{store.length}</span>
+                Favourites <span className="badge bg-secondary">{favourites.length}</span>
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {
-                    store.map((fav)=>{
+                    favourites.map((fav)=>{
                         return <li key={fav.uid}>
                             <Link to={fav.link} className="dropdown-item">
                             {fav.name}
@@ -28,5 +26,5 @@ const Favorites = () =>{
     )
 }
 
-export default Favorites;
+export default Favourites;
 
