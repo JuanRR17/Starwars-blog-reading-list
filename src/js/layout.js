@@ -21,23 +21,28 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
-	const [favorites, setFavorites] = useState([])
+	const [ store, setStore ] = useState([])
+
+
 	const deleteFromFavorites = (id) =>{
-		const newFavorites = favorites.filter((fav)=>{
-			return fav.uid !== id
-		})
-		// debugger
-		setFavorites(newFavorites)
+		setStore((oldStore)=>oldStore.filter((fav)=>{
+			return fav.uid !== id}))
 	}
 
 	const addToFavorites = (item)=>{
-		setFavorites([...favorites,item])
+		setStore(oldStore=>[...oldStore,item])
 	}
+
+	const [actions, setActions] = useState({
+		add:addToFavorites,
+		delete: deleteFromFavorites
+	})
+
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-				<favoritesContext.Provider value={{ favorites: favorites, add:addToFavorites, delete: deleteFromFavorites }}>
+				<favoritesContext.Provider value={{ store, actions}}>
 					<Navbar />
 					<Switch>
 						<Route exact path="/">

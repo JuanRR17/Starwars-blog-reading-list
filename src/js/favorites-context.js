@@ -1,9 +1,5 @@
 import React from "react";
 
-const favoritesContext = React.createContext(
-    {
-        favorites:[], add:()=>{}, delete: ()=>{}
-    }
-    )
+const favoritesContext = React.createContext(null)
 
 export default favoritesContext;

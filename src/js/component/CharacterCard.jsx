@@ -8,8 +8,9 @@ import favoritesContext from "../favorites-context"
 const CharacterCard = ({
     item
 }) => {
-    const favs = useContext(favoritesContext)
-
+    // const favs = useContext(favoritesContext)
+    const {store,actions}=useContext(favoritesContext)
+    console.log("storeInCard:",store)
     const history = useHistory()
     const [details, setDetails]=useState()
     const link = `/character/${item.uid}`
@@ -38,7 +39,7 @@ const CharacterCard = ({
                 <div>Eye-Color: {details ? details.eye_color : null}</div>
             </div>
             <button type="button" onClick={() => history.push(link)} className="btn btn-outline-primary">Learn More!</button>
-            <button type="button" onClick={() => favs.add(item)} className="float-end btn btn-outline-warning"><AiOutlineHeart/></button>
+            <button type="button" onClick={() => actions.add(item)} className="float-end btn btn-outline-warning"><AiOutlineHeart/></button>
         </div>
     </div> 
     
