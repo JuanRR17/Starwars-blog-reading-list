@@ -27,7 +27,6 @@ const Item = props => {
       }
     }
   }
-  console.log("fetchURL:",fetchURL())
 
   useEffect(()=>{
     const getItemData = async () =>{
@@ -44,8 +43,6 @@ const Item = props => {
     }
     return properties
   }
-console.log("details:", details)
-console.log("displayProperties():", displayProperties())
 
   return (
     <div className='container'>

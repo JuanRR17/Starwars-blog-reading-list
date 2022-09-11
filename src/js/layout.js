@@ -1,10 +1,8 @@
-import React, {useState, useReducer} from "react";
+import React, { useReducer} from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import Item from "./views/item";
 
 import injectContext from "./store/appContext";
@@ -12,7 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-import favouritesContext, {reducer, initialState} from "./favourites-context";
+import favouritesContext, {reducer, initialState} from "./store/favourites-context";
 
 
 //create your first component
@@ -40,14 +38,11 @@ const Layout = () => {
 						<Route exact path="/:item/:item_id">
 							<Item />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					</favouritesContext.Provider>
+				</favouritesContext.Provider>
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>

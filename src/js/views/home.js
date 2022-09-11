@@ -3,7 +3,9 @@ import "../../styles/home.css";
 import Category from "../component/Category.jsx";
 
 export const Home = () =>{
-	const categories = ["Characters", "Planets", "Vehicles"]
+	const categories = ["Characters"
+	// , "Planets", "Vehicles"
+]
 
 	return (
 	<div className="mt-5">

@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useContext, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import { makeRequest } from "../utils.js";
 import { useHistory } from 'react-router-dom';
-import favouritesContext from "../favourites-context"
+import favouritesContext from "../store/favourites-context"
 
 const CharacterCard = ({
     item
 }) => {
-    // const favs = useContext(favouritesContext)
-    const {actions}=useContext(favouritesContext)
+    const {favourites,actions}=useContext(favouritesContext)
 
     const history = useHistory()
     const [details, setDetails]=useState()
@@ -20,6 +19,14 @@ const CharacterCard = ({
         "width":"400px"
     }
 
+    const handleItemInFavourites = (elem) =>{
+        if(!favourites.includes(elem)){
+            actions.add(elem)
+        }else{
+            actions.delete(elem.uid)
+        }
+    }
+
     useEffect(()=>{
         const getCharData = async () =>{
             const det = await makeRequest(item.url)
@@ -27,7 +34,7 @@ const CharacterCard = ({
         }
         getCharData()
     },[])
-    //console.log("item:", item) //{uid: , name: , url:}
+
   return (
     <div className="card card-block" style={style}>
         <img src="..." className="card-img-top" alt="..."/>
@@ -39,13 +46,25 @@ const CharacterCard = ({
                 <div>Eye-Color: {details ? details.eye_color : null}</div>
             </div>
             <button type="button" onClick={() => history.push(link)} className="btn btn-outline-primary">Learn More!</button>
-            <button type="button" onClick={() => actions.add(item)} className="float-end btn btn-outline-warning"><AiOutlineHeart/></button>
+            {
+                favourites.includes(item) 
+                ?
+                <button type="button" onClick={() => handleItemInFavourites(item)} className="float-end btn btn-warning">
+                    <AiFillHeart/>
+                </button>
+                :
+                <button type="button" onClick={() => handleItemInFavourites(item)} className={"float-end btn btn-outline-warning"}>
+                    <AiOutlineHeart/>
+                </button>
+            }
         </div>
     </div> 
     
   )
 }
 
-CharacterCard.propTypes = {}
+CharacterCard.propTypes = {
+    item: PropTypes.object
+}
 
 export default CharacterCard

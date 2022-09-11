@@ -4,6 +4,7 @@ import PlanetCard from './PlanetCard.jsx';
 import VehicleCard from './VehicleCard.jsx';
 import PropTypes from 'prop-types'
 import { urls, makeRequest } from "../utils.js";
+import ItemCardDetails from './ItemCardDetails.jsx';
 
 const Category = ({
     category,
@@ -19,7 +20,6 @@ const Category = ({
         }
         getCategoryData()
         },[])
-        // console.log("categoryData",categoryData)
   return (
     <div >
         <h1>{category}</h1>
@@ -34,7 +34,11 @@ const Category = ({
                             return <CharacterCard 
                                 key={item.uid} 
                                 item={item}
-                                />
+                                >
+                                {/* <ItemCardDetails
+                                    category={category}
+                                /> */}
+                                </CharacterCard>
                             break
                         }
                          case "Planets":{
@@ -62,6 +66,9 @@ const Category = ({
   )
 }
 
-Category.propTypes = {}
+Category.propTypes = {
+    category: PropTypes.string,
+    id: PropTypes.number
+}
 
 export default Category

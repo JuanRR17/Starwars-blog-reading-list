@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import favouritesContext from "../favourites-context"
+import favouritesContext from "../store/favourites-context"
 import { Link } from "react-router-dom"
 
 const Favourites = () =>{
