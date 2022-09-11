@@ -1,29 +1,24 @@
 import React, { useState,useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 import { makeRequest, urls } from '../utils'
 
-const Item = props => {
+const Item = () => {
   const [details, setDetails]=useState()
-
   let location = useLocation()
+
   const id = location.pathname.split('/').slice(-1)
   const cat = location.pathname.split('/').slice(-2,-1).toString()
-  console.log("cat:",cat)
 
   const fetchURL = () =>{
     switch (cat){
-      case 'character':{
+      case 'people':{
         return urls[0]+'/'+id;
-        break
       }
-      case 'planet':{
+      case 'planets':{
         return urls[1]+'/'+id;
-        break
       }
-      case 'vehicle':{
+      case 'vehicles':{
         return urls[2]+'/'+id;
-        break
       }
     }
   }
@@ -59,11 +54,10 @@ const Item = props => {
 
         </div>
       </div>
-      : null}
+      : "Loading Page"}
     </div>
   )
 }
 
-Item.propTypes = {}
 
 export default Item

@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import CharacterCard from './CharacterCard.jsx'
-import PlanetCard from './PlanetCard.jsx';
-import VehicleCard from './VehicleCard.jsx';
+import ItemCard from './ItemCard.jsx'
 import PropTypes from 'prop-types'
 import { urls, makeRequest } from "../utils.js";
 import ItemCardDetails from './ItemCardDetails.jsx';
+// import { categories } from '../store/favourites-context.js';
 
-const Category = ({
-    category,
-    id
-}) => {
+const Category = ({category,id}) => {
+    
     const [categoryData, setCategoryData] = useState()
 
     useEffect(( )=>{
@@ -29,33 +26,9 @@ const Category = ({
             {
                 categoryData ?
                 categoryData.map((item)=>{
-                    switch (category){
-                        case "Characters":{
-                            return <CharacterCard 
-                                key={item.uid} 
-                                item={item}
-                                >
-                                {/* <ItemCardDetails
-                                    category={category}
-                                /> */}
-                                </CharacterCard>
-                            break
-                        }
-                         case "Planets":{
-                            return <PlanetCard 
-                            key={item.uid}
-                            item={item}
-                            />
-                            break
-                        }
-                       case "Vehicles":{
-                            return <VehicleCard 
-                            key={item.uid} 
-                            item={item}
-                            />
-                            break
-                        }
-                    }
+                    return <ItemCard key={item.uid} item={item}>
+                            <ItemCardDetails key={item.uid} category={category} item={item} />
+                        </ItemCard>   
                 })
                 :
                 null
@@ -67,8 +40,8 @@ const Category = ({
 }
 
 Category.propTypes = {
-    category: PropTypes.string,
-    id: PropTypes.number
+    category: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
 }
 
 export default Category

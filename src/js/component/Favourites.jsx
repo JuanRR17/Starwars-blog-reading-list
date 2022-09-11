@@ -15,7 +15,7 @@ const Favourites = () =>{
                     favourites.map((fav)=>{
                         return <li key={fav.uid}>
                             <Link to={fav.link} className="dropdown-item">
-                            {fav.name}
+                                {fav.name}
                             </Link>
                             <button onClick={() => actions.delete(fav.uid)}>Delete</button>
                         </li>
