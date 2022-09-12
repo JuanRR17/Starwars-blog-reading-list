@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { makeRequest, urls } from '../utils'
+import images from '../store/images'
 
 const Item = () => {
   const [details, setDetails]=useState()
@@ -8,6 +9,7 @@ const Item = () => {
 
   const id = location.pathname.split('/').slice(-1)
   const cat = location.pathname.split('/').slice(-2,-1).toString()
+  const imageLink = location.pathname.split('/').slice(-2).join("/")
 
   const fetchURL = () =>{
     switch (cat){
@@ -44,7 +46,7 @@ const Item = () => {
     {details ? 
       <div className='row'>
         <div className='col-6'>
-          <img src="..." className="card-img-top" alt="..."/>
+          <img src={images[imageLink]} className="card-img-top" alt={images[imageLink]}/>
         </div>
         <div className='col-6'>
           <h2>{details.name} </h2>

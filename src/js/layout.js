@@ -26,7 +26,7 @@ const Layout = () => {
 	}
 
 	return (
-		<div>
+		<div className="w-75 m-auto">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 				<favouritesContext.Provider value={{ favourites:state.favourites, actions}}>

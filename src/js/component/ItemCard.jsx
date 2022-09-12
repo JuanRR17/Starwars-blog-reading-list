@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
 import { useHistory } from 'react-router-dom';
 import favouritesContext from "../store/favourites-context"
+import images from '../store/images';
 
 const ItemCard = ({ children, item }) => {
     const { favourites,actions } = useContext(favouritesContext)
@@ -11,8 +12,13 @@ const ItemCard = ({ children, item }) => {
     const itemLink = item.url.split('/').slice(-2).join("/")
     const link = `/${itemLink}`
     item.link = link
+    item.image = images[itemLink]
     const style={
         "width":"400px"
+    }
+    const imageStyle = {
+        "height": "200px",
+        "objectFit": "cover"
     }
 
     const handleItemInFavourites = (elem) =>{
@@ -24,8 +30,8 @@ const ItemCard = ({ children, item }) => {
     }
 
   return (
-    <div className="card card-block" style={style}>
-        <img src="..." className="card-img-top" alt="..."/>
+    <div className="card card-block m-2" style={style}>
+        <img src={item.image} className="card-img-top" alt={item.image} style={imageStyle}/>
         <div className="card-body">
             <h5 className="card-title">{item.name}</h5>
             <div className="p-3 ps-0 card-text">

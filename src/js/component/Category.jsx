@@ -18,8 +18,8 @@ const Category = ({category,id}) => {
         getCategoryData()
         },[])
   return (
-    <div >
-        <h1>{category}</h1>
+    <div className='mb-3'>
+        <h2 className='text-danger'>{category}</h2>
         <div 
         className="d-flex overflow-auto">
             <div className='d-flex flex-row flex-nowrap'>
