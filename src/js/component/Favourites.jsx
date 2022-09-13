@@ -19,8 +19,8 @@ const Favourites = () =>{
                     favourites.length > 0
                     ?
                     favourites.map((fav)=>{
-                        return <li key={fav.uid} className="dropdown-item">
-                            <Link to={fav.link} >{fav.name}</Link>
+                        return <li key={fav.uid} className="dropdown-item ">
+                            <Link className="text-decoration-none" to={fav.link} >{fav.name}</Link>
                             <span className="float-end ms-2" type="button" onClick={() => actions.delete(fav.uid)}><MdDelete/></span>
                         </li>
                     })

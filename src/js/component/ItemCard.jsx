@@ -38,17 +38,16 @@ const ItemCard = ({ children, item }) => {
                 {children}
             </div>
             <button type="button" onClick={() => history.push(link)} className="btn btn-outline-primary">Learn More!</button>
-            {
-                favourites.includes(item) 
-                ?
-                <button type="button" onClick={() => handleItemInFavourites(item)} className="float-end btn btn-warning">
+            
+                <button type="button" onClick={() => handleItemInFavourites(item)} className="float-end btn btn-outline-warning">
+                {
+                    favourites.includes(item) 
+                    ?
                     <AiFillHeart/>
-                </button>
-                :
-                <button type="button" onClick={() => handleItemInFavourites(item)} className={"float-end btn btn-outline-warning"}>
+                    :
                     <AiOutlineHeart/>
+                }
                 </button>
-            }
         </div>
     </div> 
     
