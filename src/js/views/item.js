@@ -5,6 +5,7 @@ import images from '../store/images'
 
 const Item = () => {
   const [details, setDetails]=useState()
+  const [loading,setLoading]=useState(true)
   let location = useLocation()
 
   const id = location.pathname.split('/').slice(-1)
@@ -40,12 +41,14 @@ const Item = () => {
   }
 
   useEffect(()=>{
+    setLoading(true)
     const getItemData = async () =>{
         const det = await makeRequest(fetchURL())
         setDetails(det.result.properties)
+        setLoading(false)
     }
     getItemData()
-},[])
+},[location])
 
   function displayProperties(){
     let properties=[];
@@ -64,7 +67,7 @@ const Item = () => {
 
   return (
     <div className='container'>
-    {details ? 
+    {details && !loading ? 
       <div className='row'>
         <div className='col-12 col-xl-8'>
           <img style={imageStyle} src={images[imageLink]} className="card-img-top" alt={images[imageLink]}/>
@@ -77,7 +80,7 @@ const Item = () => {
         </div>
       </div>
       : <div>Loading Page</div>}
-      {details ?
+      {details && !loading ?
       <div className='row border-top border-danger border-2 mt-4'>
         {displayProperties().reverse().map((prop,index)=>{
             return <div className={`text-danger text-center text-capitalize col p-2 ${index === 0 ? "" : "border-start border-danger border-2" }`} 

@@ -3,7 +3,6 @@ import ItemCard from './ItemCard.jsx'
 import PropTypes from 'prop-types'
 import { urls, makeRequest } from "../utils.js";
 import ItemCardDetails from './ItemCardDetails.jsx';
-// import { categories } from '../store/favourites-context.js';
 
 const Category = ({category,id}) => {
     
